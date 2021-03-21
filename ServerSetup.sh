@@ -21,8 +21,10 @@ echo "postfix	postfix/mailname string $FQDN" | debconf-set-selections
 echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
 sudo apt-get install libsasl2-modules mailutils  postfix -y
 #next your email and password will be added to /etc/postfix/sasl/sasl_passwd and will be hashed after
-
-sudo sed -i '1i[smtp.gmail.com]:587 $gmailuser:$gmailpass' /etc/postfix/sasl/sasl_passwd
+sudo touch /etc/postfix/sasl/sasl_passwd
+#using this next line instead of the below line because the file is empty. Sed only works with files that contain data
+echo "[smtp.gmail.com]:587 $gmailuser:$gmailpass" | sudo tee /etc/postfix/sasl/sasl_passwd > /dev/null
+#sudo sed -i '1i[smtp.gmail.com]:587 $gmailuser:$gmailpass' /etc/postfix/sasl/sasl_passwd
 sudo postmap /etc/postfix/sasl/sasl_passwd
 #Secure the plain text files by limiting access to the root user at root:root and 600 permission
 sudo chown root:root /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db
