@@ -3,7 +3,7 @@
 ##############
 cd ~
 clear
-curl --silent -o- https://github.com/IArentBen/Master-Server-Setup/blob/main/Logo.sh | bash
+curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Logo.sh | bash
 #######################
 # START SETUP TOOLING #
 #######################
