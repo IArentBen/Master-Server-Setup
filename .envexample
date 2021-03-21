@@ -1,3 +1,4 @@
+#remove example from file name
 Export Hostname=Docker
 Export FQDN=Test.fqdn
 Export gmailuser=

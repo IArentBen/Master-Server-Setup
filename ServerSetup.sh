@@ -19,7 +19,7 @@ sudo apt update -y && sudo apt upgrade -y
 # config email
 echo "postfix	postfix/mailname string $FQDN" | debconf-set-selections
 echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
-sudo apt-get install libsasl2-modules mailutils  postfix
+sudo apt-get install libsasl2-modules mailutils  postfix -y
 #next your email and password will be added to /etc/postfix/sasl/sasl_passwd and will be hashed after
 
 sudo sed -i '1i[smtp.gmail.com]:587 $gmailuser:$gmailpass' /etc/postfix/sasl/sasl_passwd
