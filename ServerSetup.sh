@@ -3,17 +3,22 @@
 ##############
 cd ~
 clear
-curl --silent -o-  | bash
+curl --silent -o- https://github.com/IArentBen/Master-Server-Setup/blob/main/Logo.sh | bash
 #######################
 # START SETUP TOOLING #
 #######################
 # Update and Upgrade
-# set up email
+sudo apt update -y && sudo apt upgrade -y
+# config email email
+# install and config git
 # Auto Update with email notification
+# Install and config ZSH
 # ssh
 # Snapraid
 # Mergerfs
 # Log Watch
+# Docker and Docker-Compose
+
 curl --silent -o-  | bash
 curl --silent -o-  | zsh
 
