@@ -50,6 +50,6 @@ sudo systemctl restart postfix
 
 # Docker and Docker-Compose
 
-curl --silent -o-  | bash
-curl --silent -o-  | zsh
+#curl --silent -o-  | bash
+#curl --silent -o-  | zsh
 unset $(grep -v '^#' .env | sed -E 's/(.*)=.*/\1/' | xargs)
