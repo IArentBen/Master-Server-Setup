@@ -40,7 +40,7 @@ grep -q '^relayhost =' /etc/postfix/main.cf && sudo sed -i 's/^relayhost =.*/rel
 grep -q '^smtp_use_tls =' /etc/postfix/main.cf && sudo sed -i 's/^smtp_use_tls =.*/smtp_use_tls = yes/' /etc/postfix/main.cf || echo 'smtp_use_tls = yes' | sudo tee -a /etc/postfix/main.cf
 grep -q '^smtp_sasl_auth_enable =' /etc/postfix/main.cf && sudo sed -i 's/^smtp_sasl_auth_enable =.*/smtp_sasl_auth_enable = yes/' /etc/postfix/main.cf || echo 'smtp_sasl_auth_enable = yes' | sudo tee -a /etc/postfix/main.cf
 grep -q '^smtp_sasl_security_options =' /etc/postfix/main.cf && sudo sed -i 's/^smtp_sasl_security_options =.*/smtp_sasl_security_options =/' /etc/postfix/main.cf || echo 'smtp_sasl_security_options =' | sudo tee -a /etc/postfix/main.cf
-grep -q '^smtp_sasl_password_maps =' /etc/postfix/main.cf && sudo sed -i 's/^smtp_sasl_password_maps =.*/smtp_sasl_password_maps = hash:\/etc\/postfix\/sasl_passwd/' /etc/postfix/main.cf || echo 'smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd' | sudo tee -a /etc/postfix/main.cf
+grep -q '^smtp_sasl_password_maps =' /etc/postfix/main.cf && sudo sed -i 's/^smtp_sasl_password_maps =.*/smtp_sasl_password_maps = hash:\/etc\/postfix\/sasl\/sasl_passwd/' /etc/postfix/main.cf || echo 'smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd' | sudo tee -a /etc/postfix/main.cf
 grep -q '^smtp_tls_CAfile =' /etc/postfix/main.cf && sudo sed -i 's/^smtp_tls_CAfile =.*/smtp_tls_CAfile = \/etc\/ssl\/certs\/ca-certificates.crt/' /etc/postfix/main.cf || echo 'smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt' | sudo tee -a /etc/postfix/main.cf
 
 #restart postfix service
