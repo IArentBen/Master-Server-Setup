@@ -9,16 +9,17 @@ curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setu
 #######################
 
 #Loading variables locally to current session while ignoring commented out lines and allowing spaces
-# grep -v '^#' will find lines starting with # then invert the sense of matching, to select non-matching lines.
+# grep -v  will find lines starting with # then invert the sense of matching, to select non-matching lines.
 #.env is the file with the variables
 #finally xargs -d splits the process and reads
-export $(grep -v '^#' .env | xargs -d '\n')
+export $(grep -v '^#' $OLDPWD/secret | xargs -d '\n') >/dev/null
+#export $(grep -v '^#' /home/docker/Master-Server-Setup/secret | xargs -d '\n') >/dev/null
 
 # Update and Upgrade
 sudo apt update -y && sudo apt upgrade -y
 # config email
-echo "postfix	postfix/mailname string $FQDN" | debconf-set-selections
-echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
+sudo echo "postfix postfix/mailname string $FQDN" | debconf-set-selections
+sudo echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
 sudo apt-get install libsasl2-modules mailutils  postfix -y
 #next your email and password will be added to /etc/postfix/sasl/sasl_passwd and will be hashed after
 sudo touch /etc/postfix/sasl/sasl_passwd
@@ -52,4 +53,5 @@ sudo systemctl restart postfix
 
 #curl --silent -o-  | bash
 #curl --silent -o-  | zsh
-unset $(grep -v '^#' .env | sed -E 's/(.*)=.*/\1/' | xargs)
+#removes variables from shell
+unset $(grep -v '^#' $OLDPWD/secret | sed -E 's/(.*)=.*/\1/' | xargs)
