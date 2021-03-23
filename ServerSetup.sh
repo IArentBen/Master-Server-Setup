@@ -40,23 +40,23 @@ fi
 # install and config git
 
 #check to see if Git is installed
-if $(command -v Git >dev/null)
+if $(command -v git >dev/null)
     then 
-        echo "Git is already installed"
-        echo "Do you wish to install Git?"
+        echo "git is already installed"
+        echo "Do you wish to install git?"
         while true; do
-            read -p "Do you wish to config Git?" yn
+            read -p "Do you wish to config git?" yn
             case $yn in
-                [Yy]* ) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Git.sh | bash; break;;
+                [Yy]* ) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/git.sh | bash; break;;
                 [Nn]* ) exit;;
                 * ) echo "Please answer yes or no.";;
             esac
         done
-    else echo "Installing Git"
-sudo apt-get install libsasl2-modules mailutils Git -y
+    else echo "Installing git"
+sudo apt install git -y
 #Call Git config script
-curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Git.sh | bash
-echo "Git is now installed and setup"
+curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/git.sh | bash
+echo "git is now installed and setup"
 fi 
 
 

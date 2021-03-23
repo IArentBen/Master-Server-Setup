@@ -1,1 +1,1 @@
-echo "Git Script"
+echo "git Script"
