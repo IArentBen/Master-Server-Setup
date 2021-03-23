@@ -14,6 +14,10 @@ curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setu
 #finally xargs -d splits the process and reads
 export $(grep -v '^#' $OLDPWD/secret | xargs -d '\n') >/dev/null
 #export $(grep -v '^#' /home/docker/Master-Server-Setup/secret | xargs -d '\n') >/dev/null
+#check to see if postfix is installed
+if $(command -v postfix >dev/null)
+then echo "Postfix is already installed"
+else echo "Installing Postfix"
 
 # Update and Upgrade
 sudo apt update -y && sudo apt upgrade -y
@@ -45,7 +49,7 @@ grep -q '^smtp_tls_CAfile =' /etc/postfix/main.cf && sudo sed -i 's/^smtp_tls_CA
 
 #restart postfix service
 sudo systemctl restart postfix
-
+fi 
 # install and config git
 
 # Auto Update with email notification
