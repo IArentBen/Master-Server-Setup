@@ -21,7 +21,7 @@ sudo apt update -y && sudo apt upgrade -y
 if $(command -v postfix >/dev/null)
     then 
         echo "Postfix is already installed"
-        echo "Do you wish to install this program?"
+        echo "Do you wish to config this program?"
         while true; do
             read -p "Do you wish to config this program?" yn
             case $yn in
@@ -43,7 +43,7 @@ fi
 if $(command -v git >/dev/null)
     then 
         echo "git is already installed"
-        echo "Do you wish to install git?"
+        echo "Do you wish to config git?"
         while true; do
             read -p "Do you wish to config git?" yn
             case $yn in
