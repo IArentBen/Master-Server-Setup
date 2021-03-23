@@ -14,14 +14,13 @@ curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setu
 #finally xargs -d splits the process and reads
 export $(grep -v '^#' $OLDPWD/secret | xargs -d '\n') >/dev/null
 #export $(grep -v '^#' /home/docker/Master-Server-Setup/secret | xargs -d '\n') >/dev/null
+# Update and Upgrade
+sudo apt update -y && sudo apt upgrade -y
+# config email
 #check to see if postfix is installed
 if $(command -v postfix >dev/null)
 then echo "Postfix is already installed"
 else echo "Installing Postfix"
-
-# Update and Upgrade
-sudo apt update -y && sudo apt upgrade -y
-# config email
 sudo echo "postfix postfix/mailname string $FQDN" | debconf-set-selections
 sudo echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
 sudo apt-get install libsasl2-modules mailutils  postfix -y
@@ -50,7 +49,13 @@ grep -q '^smtp_tls_CAfile =' /etc/postfix/main.cf && sudo sed -i 's/^smtp_tls_CA
 #restart postfix service
 sudo systemctl restart postfix
 fi 
+
 # install and config git
+if $(command -v git >dev/null)
+then echo "git is already installed"
+else echo "Installing git"
+sudo apt install git -y
+
 
 # Auto Update with email notification
 
