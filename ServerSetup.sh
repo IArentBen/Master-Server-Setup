@@ -18,7 +18,7 @@ export $(grep -v '^#' $OLDPWD/secret | xargs -d '\n') >/dev/null
 sudo apt update -y && sudo apt upgrade -y
 # config email
 #check to see if postfix is installed
-if $(command -v postfix >dev/null)
+if $(command -v postfix >/dev/null)
     then 
         echo "Postfix is already installed"
         echo "Do you wish to install this program?"
@@ -40,7 +40,7 @@ fi
 # install and config git
 
 #check to see if Git is installed
-if $(command -v git >dev/null)
+if $(command -v git >/dev/null)
     then 
         echo "git is already installed"
         echo "Do you wish to install git?"
