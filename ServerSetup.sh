@@ -7,7 +7,7 @@ curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setu
 #######################
 # START SETUP TOOLING #
 #######################
-
+mkdir /home/$USER/bin/
 #Loading variables locally to current session while ignoring commented out lines and allowing spaces
 # grep -v  will find lines starting with # then invert the sense of matching, to select non-matching lines.
 #.env is the file with the variables
@@ -70,6 +70,8 @@ fi
 
 # Mergerfs
 
+sudo wget https://github.com/trapexit/mergerfs/releases/download/2.32.4/mergerfs_2.32.4.debian-buster_amd64.deb -P /home/$USER/bin/
+sudo dpkg -i mergerfs_2.32.4.debian-buster_amd64.deb
 # Log Watch
 
 # Docker and Docker-Compose
