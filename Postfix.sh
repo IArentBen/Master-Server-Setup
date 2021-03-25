@@ -25,3 +25,5 @@ grep -q '^smtp_tls_CAfile =' /etc/postfix/main.cf && sudo sed -i 's/^smtp_tls_CA
 
 #restart postfix service
 sudo systemctl restart postfix
+# send test email
+echo "If you received this email postfix has been installed and configured, congrats." | mail -s "Postfix config test email" benoit.charles@outlook.com
