@@ -36,9 +36,7 @@ sudo apt-get install libsasl2-modules mailutils postfix -y
 curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Postfix.sh | bash
 echo "Postfix is now installed and setup"
 fi
-
-# install and config git
-
+#git
 #check to see if Git is installed
 if $(command -v git >/dev/null)
 then
@@ -58,17 +56,43 @@ sudo apt install git -y
 curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/git.sh | bash
 echo "git is now installed and setup"
 fi
-
-
-# Auto Update with email notification
-
 # Install and config ZSH
-
+if $(command -v zsh >/dev/null)
+  then 
+    echo "zsh is already installed"
+    while true; do
+      read -p "Do you wish to config zsh?" yn
+      case $yn in
+        [Yy]* ) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/zsh.sh | bash; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+      esac
+    done
+  else echo "Installing zsh"
+#Call zsh config script
+echo "zsh is now installed and setup"
+curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/zsh.sh | bash
+fi 
 # ssh
-
+if $(command -v ssh >/dev/null)
+  then 
+    echo "ssh is already installed"
+    while true; do
+      read -p "Do you wish to config ssh?" yn
+      case $yn in
+        [Yy]* ) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/ssh.sh | bash; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+      esac
+    done
+  else echo "Installing ssh"
+#Call ssh config script
+echo "ssh is now installed and setup"
+curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/ssh.sh | bash
+fi 
 # Mergerfs
 if $(command -v mergerfs >/dev/null)
-then
+  then
 echo "mergerfs is already installed"
 while true; do
 read -p "Do you wish to config mergerfs?" yn
@@ -97,41 +121,40 @@ case $yn in
 esac
 done
 else echo "Installing snapraid"
+sudo add-apt-repository ppa:tikhonov/snapraid
+sudo apt update
+sudo apt install snapraid
 #Call snapraid config script
 echo "snapraid is now installed and setup"
 fi
 # Log Watch
 if $(command -v Logwatch >/dev/null)
-    then 
-        echo "Logwatch is already installed"
-        while true; do
-            read -p "Do you wish to config Logwatch?" yn
-            case $yn in
-                [Yy]* ) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Logwatch.sh | bash; break;;
-                [Nn]* ) exit;;
-                * ) echo "Please answer yes or no.";;
-            esac
-        done
-    else echo "Installing Logwatch"
+  then 
+    echo "Logwatch is already installed"
+    while true; do
+      read -p "Do you wish to config Logwatch?" yn
+      case $yn in
+        [Yy]* ) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Logwatch.sh | bash; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+      esac
+    done
+  else echo "Installing Logwatch"
 #Call Logwatch config script
 echo "Logwatch is now installed and setup"
 fi 
 # Docker and Docker-Compose
 if $(command -v Docker and Docker Compose >/dev/null)
-    then 
-        echo "Docker and Docker Compose is already installed"
-        while true; do
-            read -p "Do you wish to config Docker and Docker Compose?" yn
-            case $yn in
-                [Yy]* ) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Docker and Docker Compose.sh | bash; break;;
-                [Nn]* ) exit;;
-                * ) echo "Please answer yes or no.";;
-            esac
-        done
-    else echo "Installing Docker and Docker Compose"
-#Call Docker and Docker Compose config script
-echo "Docker and Docker Compose is now installed and setup"
+  then 
+    echo "Docker and Docker Compose is already installed"
+      done
+  else
+    echo "Installing Docker and Docker Compose"
+#Call Docker install script
+    curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/docker.sh | bash
+    echo "Docker and Docker Compose is now installed and setup"
 fi 
+#Auto Update with email notification
 #curl --silent -o-  | bash
 #curl --silent -o-  | zsh
 #removes variables from shell
