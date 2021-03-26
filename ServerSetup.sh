@@ -28,6 +28,7 @@ case $yn in
 [Yy]*) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Postfix.sh | bash; break;;
 [Nn]*) echo "OK, Let's move on then."
 *) echo "Please answer yes or no.";;
+esac
 done
 else echo "Installing Postfix"
 sudo apt-get install libsasl2-modules mailutils postfix -y
