@@ -1,5 +1,7 @@
 echo 'mergerfs is being configured'
-
+#Create copy of sasl_passwd in current directory and in defaults directory
+sudo cp --archive /etc/fstab /etc/fstab-COPY-$(date +"%Y%m%d%H%M%S")
+sudo cp --archive /etc/fstab /home/$USER/bin/defaults/fstab-COPY-$(date +"%Y%m%d%H%M%S")
 #copying info FSTAB
 grep -q '^#These disks are for' /etc/fstab && sudo sed -i 's/^#These disks are for.*/#These disks are for the MergerFS Pool/' /etc/fstab || echo '#These disks are for the MergerFS Pool' | sudo tee -a /etc/fstab
 grep -q '^UUID=$UUIDDISK0' /etc/fstab && sudo sed -i 's/^UUID=$UUIDDISK0.*/UUID=$UUIDDISK0   /mnt/disk0 ext4 defaults 0 0/' /etc/fstab || echo 'UUID=$UUIDDISK0   /mnt/disk0 ext4 defaults 0 0' | sudo tee -a /etc/fstab
