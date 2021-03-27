@@ -24,7 +24,7 @@ sudo apt install gcc make -y
     if $(command -v postfix >/dev/null); then
         echo 'Postfix is already installed'
         echo 'Do you wish to config this program?'
-            read -pr 'Do you wish to config this program?' yn
+            read -p 'Do you wish to config this program?' yn
             case $yn in
             [Yy]*) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Postfix.sh | bash ;;
             [Nn]*) echo "Moving on" ;;
@@ -43,10 +43,10 @@ sudo apt install gcc make -y
     #check to see if Git is installed
     if $(command -v git >/dev/null); then
         echo 'git is already installed'
-            read -pr 'Do you wish to config git?' yn
+            read -p 'Do you wish to config git?' yn
             case $yn in
             [Yy]*) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/git.sh  | bash ;;
-            [Nn]*) echo "Moving on" done ;;
+            [Nn]*) echo "Moving on" ;;
             *) echo 'Please answer yes or no.' ;;
             esac
     else
@@ -59,7 +59,7 @@ sudo apt install gcc make -y
 # Install and config ZSH
     if $(command -v zsh >/dev/null); then
         echo 'zsh is already installed'
-            read -pr 'Do you wish to config zsh?' yn
+            read -p 'Do you wish to config zsh?' yn
             case $yn in
             [Yy]*) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/zsh.sh  | bash ;;
             [Nn]*) echo "Moving on"   ;;
@@ -74,7 +74,7 @@ sudo apt install gcc make -y
 # ssh
     if $(command -v ssh >/dev/null); then
         echo 'ssh is already installed'
-            read -pr 'Do you wish to config ssh?' yn
+            read -p 'Do you wish to config ssh?' yn
             case $yn in
             [Yy]*) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/ssh.sh  | bash ;;
             [Nn]*) echo "Moving on"   ;;
@@ -89,10 +89,9 @@ sudo apt install gcc make -y
 # Mergerfs
     if $(command -v mergerfs >/dev/null); then
         echo 'mergerfs is already installed'
-            read -pr 'Do you wish to config mergerfs?' yn
+            read -p 'Do you wish to config mergerfs?' yn
             case $yn in
-            [Yy]*)
-                curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/mergerfs.sh  | bash ;;
+            [Yy]*) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/mergerfs.sh  | bash ;;
             [Nn]*) echo "Moving on"   ;;
             *) echo 'Please answer yes or no.' ;;
             esac
@@ -107,7 +106,7 @@ sudo apt install gcc make -y
 #Snapraid
     if $(command -v snapraid >/dev/null); then
         echo 'snapraid is already installed'
-            read -pr 'Do you wish to config snapraid?' yn
+            read -p 'Do you wish to config snapraid?' yn
             case $yn in
             [Yy]*) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/snapraid.sh  | bash ;;
             [Nn]*) echo "Moving on"   ;;
@@ -125,7 +124,7 @@ sudo apt install gcc make -y
 # Log Watch
     if $(command -v Logwatch >/dev/null); then
         echo 'Logwatch is already installed'
-            read -pr 'Do you wish to config Logwatch?' yn
+            read -p 'Do you wish to config Logwatch?' yn
             case $yn in
             [Yy]*) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Logwatch.sh  | bash ;;
             [Nn]*) echo "Moving on"   ;;
