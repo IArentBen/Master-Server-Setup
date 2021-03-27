@@ -26,7 +26,7 @@ while true; do
 read -p 'Do you wish to config this program?' yn
 case $yn in
 [Yy]*) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Postfix.sh | bash; break;;
-[Nn]*) echo 'OK, Let's move on then.'
+[Nn]*) echo 'Moving on'
 *) echo 'Please answer yes or no.';;
 esac
 done
@@ -45,7 +45,7 @@ while true; do
 read -p 'Do you wish to config git?' yn
 case $yn in
 [Yy]*) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/git.sh | bash; break;;
-[Nn]*) echo 'OK, Let's move on then.'
+[Nn]*) echo 'Moving on'
 *) echo 'Please answer yes or no.';;
 esac
 done
@@ -63,7 +63,7 @@ if $(command -v zsh >/dev/null)
       read -p 'Do you wish to config zsh?' yn
       case $yn in
         [Yy]* ) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/zsh.sh | bash; break;;
-        [Nn]* ) echo 'OK, Let's move on then.'
+        [Nn]* ) echo 'Moving on'
         * ) echo 'Please answer yes or no.';;
       esac
     done
@@ -80,7 +80,7 @@ if $(command -v ssh >/dev/null)
       read -p 'Do you wish to config ssh?' yn
       case $yn in
         [Yy]* ) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/ssh.sh | bash; break;;
-        [Nn]* ) echo 'OK, Let's move on then.'
+        [Nn]* ) echo 'Moving on'
         * ) echo 'Please answer yes or no.';;
       esac
     done
@@ -97,7 +97,7 @@ while true; do
 read -p 'Do you wish to config mergerfs?' yn
 case $yn in
 [Yy]*) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/mergerfs.sh | bash; break;;
-[Nn]*) echo 'OK, Let's move on then.'
+[Nn]*) echo 'Moving on'
 *) echo 'Please answer yes or no.';;
 esac
 done
@@ -115,7 +115,7 @@ while true; do
 read -p 'Do you wish to config snapraid?' yn
 case $yn in
 [Yy]*) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/snapraid.sh | bash; break;;
-[Nn]*) echo 'OK, Let's move on then.'
+[Nn]*) echo 'Moving on'
 *) echo 'Please answer yes or no.';;
 esac
 done
@@ -126,6 +126,7 @@ sudo apt install snapraid
 #Call snapraid config script
 echo 'snapraid is now installed and setup'
 fi
+#snapraid runner https://github.com/Chronial/snapraid-runner
 # Log Watch
 if $(command -v Logwatch >/dev/null)
   then 
@@ -134,7 +135,7 @@ if $(command -v Logwatch >/dev/null)
       read -p 'Do you wish to config Logwatch?' yn
       case $yn in
         [Yy]* ) curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Logwatch.sh | bash; break;;
-        [Nn]* ) echo 'OK, Let's move on then.'
+        [Nn]* ) echo 'Moving on'
         * ) echo 'Please answer yes or no.';;
       esac
     done
