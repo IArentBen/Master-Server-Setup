@@ -36,7 +36,7 @@ sudo apt install gcc make -y
         sudo echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
         sudo apt-get install libsasl2-modules mailutils postfix -y
         #call postfix config script
-        curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Postfix.sh  | bash ;;
+        curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Postfix.sh  | bash
         echo 'Postfix is now installed and setup'
     fi
 #  Git
@@ -53,7 +53,7 @@ sudo apt install gcc make -y
         echo 'Installing git'
         sudo apt install git -y
         #Call Git config script
-        curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/git.sh  | bash ;;
+        curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/git.sh  | bash
         echo 'git is now installed and setup'
     fi
 # Install and config ZSH
@@ -67,9 +67,9 @@ sudo apt install gcc make -y
             esac
     else
         echo 'Installing zsh'
-        #Call zsh config script
+        sudo apt install zsh -y
+        curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/zsh.sh  | bash
         echo 'zsh is now installed and setup'
-        curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/zsh.sh  | bash ;;
     fi
 # ssh
     if $(command -v ssh >/dev/null); then
@@ -84,7 +84,7 @@ sudo apt install gcc make -y
         echo 'Installing ssh'
         #Call ssh config script
         echo 'ssh is now installed and setup'
-        curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/ssh.sh  | bash ;;
+        curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/ssh.sh  | bash
     fi
 # Mergerfs
     if $(command -v mergerfs >/dev/null); then
@@ -98,7 +98,7 @@ sudo apt install gcc make -y
     else
         echo 'Installing mergerfs'
         #Call mergerfs config script
-        sudo wget https://github.com/trapexit/mergerfs/releases/download/2.32.4/mergerfs_$MFSver.$OSver.deb -P /home/$USER/bin/
+        sudo wget https://github.com/trapexit/mergerfs/releases/download/$MFSver/mergerfs_$MFSver.$OSver.deb -P /home/$USER/bin/
         sudo dpkg -i /home/$user/bin/mergerfs_$MFSver.$OSver.deb
         curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/mergerfs.sh  | bash
         echo 'mergerfs is now installed and setup'
@@ -118,6 +118,7 @@ sudo apt install gcc make -y
         sudo apt update
         sudo apt install snapraid
         #Call snapraid config script
+        curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/snapraid.sh  | bash
         echo 'snapraid is now installed and setup'
     fi
     #snapraid runner https://github.com/Chronial/snapraid-runner
@@ -134,7 +135,7 @@ sudo apt install gcc make -y
         echo 'Installing Logwatch'
         sudo apt install logwatch
         #Call Logwatch config script
-        curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Logwatch.sh
+        curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Logwatch.sh | bash
         echo 'Logwatch is now installed and setup'
     fi
 # Docker
