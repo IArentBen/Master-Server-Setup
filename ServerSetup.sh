@@ -156,7 +156,7 @@ sudo apt install gcc make -y
         else
         echo 'Installing Docker'
     #Call Docker install script
-        curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/docker.sh  | bash ;;
+        curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/docker.sh  | bash
         echo 'Docker is now installed'
     fi 
 #Auto Update with email notification
