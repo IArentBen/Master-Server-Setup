@@ -162,4 +162,4 @@ sudo apt install gcc make -y
 #Auto Update with email notification
 
 #removes variables from shell
-    unset $(grep -v '^#' $OLDPWD/secret | sed -E 's/(.*)=.*/\1/' | xargs)
+    unset $(grep -v '^#' ${__dir}/secret | sed -E 's/(.*)=.*/\1/' | xargs)
