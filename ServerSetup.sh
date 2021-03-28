@@ -2,14 +2,15 @@
 ##############
 # SHOW LOGOS #
 ##############
-cd ~
+clear
+# Update and Upgrade install needed packages
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install gcc curl make -y
 clear
 curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/Logo.sh | bash
 #######################
 # START SETUP TOOLING #
 #######################
-mkdir /home/$USER/bin/ >/dev/null
-mkdir /home/$USER/bin/defaults >/dev/null
 #Loading variables locally to current session while ignoring commented out lines and allowing spaces
 # grep -v  will find lines starting with # then invert the sense of matching, to select non-matching lines.
 #.env is the file with the variables
@@ -18,9 +19,8 @@ __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo ${__dir}
 export $(grep -v '^#' ${__dir}/secret | xargs -d '\n') >/dev/null
 #export $(grep -v '^#' /home/docker/Master-Server-Setup/secret | xargs -d '\n') >/dev/null
-# Update and Upgrade install needed packages
-sudo apt update -y && sudo apt upgrade -y
-sudo apt install gcc make -y
+mkdir /home/$USER/bin/ >/dev/null
+mkdir /home/$USER/bin/defaults >/dev/null
 # Postfix for Email notifications
     #check to see if postfix is installed
     if $(command -v postfix >/dev/null); then
