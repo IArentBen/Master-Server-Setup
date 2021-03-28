@@ -14,7 +14,9 @@ mkdir /home/$USER/bin/defaults >/dev/null
 # grep -v  will find lines starting with # then invert the sense of matching, to select non-matching lines.
 #.env is the file with the variables
 #finally xargs -d splits the process and reads
-export $(grep -v '^#' $OLDPWD/secret | xargs -d '\n') >/dev/null
+__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+echo ${__dir}
+export $(grep -v '^#' ${__dir}/secret | xargs -d '\n') >/dev/null
 #export $(grep -v '^#' /home/docker/Master-Server-Setup/secret | xargs -d '\n') >/dev/null
 # Update and Upgrade install needed packages
 sudo apt update -y && sudo apt upgrade -y
@@ -98,8 +100,9 @@ sudo apt install gcc make -y
     else
         echo 'Installing mergerfs'
         #Call mergerfs config script
+        sudo apt install fuse
         sudo wget https://github.com/trapexit/mergerfs/releases/download/$MFSver/mergerfs_$MFSver.$OSver.deb -P /home/$USER/bin/
-        sudo dpkg -i /home/$user/bin/mergerfs_$MFSver.$OSver.deb
+        sudo dpkg -i /home/$USER/bin/mergerfs_$MFSver.$OSver.deb
         curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/mergerfs.sh  | bash
         echo 'mergerfs is now installed and setup'
     fi
@@ -113,10 +116,19 @@ sudo apt install gcc make -y
             *) echo 'Please answer yes or no.' ;;
             esac
     else
+        ## https://www.havetheknowhow.com/Configure-the-server/Install-SnapRAID.html 
         echo 'Installing snapraid'
-        sudo add-apt-repository ppa:tikhonov/snapraid
-        sudo apt update
-        sudo apt install snapraid
+        sudo mkdir /var/lib/snapraid
+        sudo chmod a+w /var/lib/snapraid
+        cd /var/lib/snapraid
+        wget https://github.com/amadvance/snapraid/releases/download/v$SRver/snapraid-$SRver.tar.gz
+        tar -xzf snapraid-$SRver.tar.gz
+        cd snapraid-$SRver
+        ./configure
+        make
+        make check
+        sudo make install
+        cd .. && rm /var/lib/snapraid/snapraid-11.5.tar.gz
         #Call snapraid config script
         curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/snapraid.sh  | bash
         echo 'snapraid is now installed and setup'
