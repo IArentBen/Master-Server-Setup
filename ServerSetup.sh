@@ -19,8 +19,11 @@ __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo ${__dir}
 export $(grep -v '^#' ${__dir}/secret | xargs -d '\n') >/dev/null
 #export $(grep -v '^#' /home/docker/Master-Server-Setup/secret | xargs -d '\n') >/dev/null
-mkdir /home/$USER/bin/ >/dev/null
-mkdir /home/$USER/bin/defaults >/dev/null
+mkdir /server
+mkdir /server/bin/ >/dev/null
+mkdir /server/bin/defaults >/dev/null
+sudo chown -R docker:docker /server >/dev/null
+sudo chmod -R 766 /server >/dev/null
 # Postfix for Email notifications
     #check to see if postfix is installed
     if $(command -v postfix >/dev/null); then
@@ -101,8 +104,8 @@ mkdir /home/$USER/bin/defaults >/dev/null
         echo 'Installing mergerfs'
         #Call mergerfs config script
         sudo apt install fuse
-        sudo wget https://github.com/trapexit/mergerfs/releases/download/$MFSver/mergerfs_$MFSver.$OSver.deb -P /home/$USER/bin/
-        sudo dpkg -i /home/$USER/bin/mergerfs_$MFSver.$OSver.deb
+        sudo wget https://github.com/trapexit/mergerfs/releases/download/$MFSver/mergerfs_$MFSver.$OSver.deb -P /server/bin/
+        sudo dpkg -i /server/bin/mergerfs_$MFSver.$OSver.deb
         curl --silent -o- https://raw.githubusercontent.com/IArentBen/Master-Server-Setup/main/mergerfs.sh  | bash
         echo 'mergerfs is now installed and setup'
     fi
