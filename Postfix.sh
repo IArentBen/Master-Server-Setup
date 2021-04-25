@@ -2,7 +2,7 @@
 sudo touch /etc/postfix/sasl/sasl_passwd
 #Create copy of sasl_passwd in current directory and in defaults directory
 sudo cp --archive /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd-COPY-$(date +"%Y%m%d%H%M%S")
-sudo cp --archive /etc/postfix/sasl/sasl_passwd /home/$USER/bin/defaults/sasl_passwd-COPY-$(date +"%Y%m%d%H%M%S")
+sudo cp --archive /etc/postfix/sasl/sasl_passwd /server/bin/defaults/sasl_passwd-COPY-$(date +"%Y%m%d%H%M%S")
 #using this next line instead of the below line because the file is empty. Sed only works with files that contain data
 echo "[smtp.gmail.com]:587 $gmailuser:$gmailpass" | sudo tee /etc/postfix/sasl/sasl_passwd > /dev/null
 #sudo sed -i '1i[smtp.gmail.com]:587 $gmailuser:$gmailpass' /etc/postfix/sasl/sasl_passwd
